@@ -1,3 +1,19 @@
+<script setup>
+import { onMounted, ref } from "vue"
+
+let invoices = ref([])
+
+onMounted(async ()=>{
+    getInvoices()
+})
+
+const getInvoices = async() => {
+    let response = await axios.get("/api/get_all_invoice")
+    console.log('response', response)
+}
+
+</script>
+
 <template>
      <div class="container">
         <div class="invoices">
