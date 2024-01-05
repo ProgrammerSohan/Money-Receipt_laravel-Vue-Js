@@ -9,7 +9,7 @@ onMounted(async ()=>{
 
 const getInvoices = async() => {
     let response = await axios.get("/api/get_all_invoice")
-    //console.log('response', response)
+    console.log('response', response)
     invoices.value = response.data.invoices
 }
 
