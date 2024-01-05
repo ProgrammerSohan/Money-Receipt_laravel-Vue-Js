@@ -20,6 +20,11 @@ const search = async () =>{
     invoices.value = response.data.invoices
 }
 
+const newInvoice = async()=>{
+    let form = await axios.get("/api/create_invoice")
+    console.log('form',form.data)
+}
+
 </script>
 
 <template>
