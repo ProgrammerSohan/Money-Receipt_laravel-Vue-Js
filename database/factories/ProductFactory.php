@@ -21,5 +21,6 @@ class ProductFactory extends Factory
             'description' => 'Name of Product'.rand(10, 500),
             'unit_price' => mt_rand(100, 1000)
         ];
+
     }
 }
