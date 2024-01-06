@@ -134,11 +134,11 @@
                     <div>
                         <p class="my-1">Customer</p>
                         <select name="" id="" class="input" v-model="customer_id">
-                  <option disabled>Selected Customer</option>
-                   <option v-for="customer in allcustomers" :key="customer.id" :value="customer.id">
-                    {{ customer.firstname }}
+                        <option disabled>Selected Customer</option>
+                        <option v-for="customer in allcustomers" :key="customer.id" :value="customer.id">
+                        {{ customer.firstname }}
 
-                  </option>
+                        </option>
                         </select>
                     </div>
                     <div>
