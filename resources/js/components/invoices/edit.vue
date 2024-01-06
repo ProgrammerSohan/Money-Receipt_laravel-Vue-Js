@@ -1,3 +1,32 @@
+<script setup>
+import axios from "axios";
+import {onMounted, ref } from "vue"
+
+let form = ref({
+    id: ''
+})
+
+const props = defineProps({
+    id:{
+        type:String,
+        default:''
+    }
+
+})
+
+onMounted(async () => {
+    getInvoice()
+
+});
+
+const getInvoice = async () =>{
+    let response = await axios.get(`/api/edit_invoice/${props.id}`);
+    console.log('form', response.data.invoice);
+
+}
+
+</script>
+
 <template>
     <div class="container">
         <div class="invoices">
