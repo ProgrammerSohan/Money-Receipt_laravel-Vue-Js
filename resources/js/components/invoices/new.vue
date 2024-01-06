@@ -40,6 +40,12 @@
         quantity : item.quantity,
     }
     listCart.value.push(itemcart)
+    closeModal()
+
+ }
+
+ const removeItem = (i) =>{
+    listCart.value.splice(i,1)
 
  }
 
@@ -56,6 +62,19 @@
     let response = await axios.get('/api/products')
     console.log('products', response)
     listproducts.value = response.data.products
+
+ }
+
+ const SubTotal = ()=>{
+    let total = 0
+    listCart.value.map((data)=>{
+        total = total + (data.quantity*data.unit_price)
+    })
+    return total
+ }
+
+ const Total = () => {
+    return SubTotal() - form.value.discount
 
  }
 
@@ -122,7 +141,7 @@
                            $ {{ (itemcart.quantity)*(itemcart.unit_price) }}
                         </p>
                         <p v-else></p>
-                        <p style="color: red; font-size: 24px;cursor: pointer;">
+                        <p style="color: red; font-size: 24px;cursor: pointer;" @click="removeItem(i)">
                             &times;
                         </p>
                     </div>
@@ -136,20 +155,20 @@
                 <div class="table__footer">
                     <div class="document-footer" >
                         <p>Terms and Conditions</p>
-                        <textarea cols="50" rows="7" class="textarea" ></textarea>
+                        <textarea cols="50" rows="7" class="textarea" v-model="form.terms_and_conditions"></textarea>
                     </div>
                     <div>
                         <div class="table__footer--subtotal">
                             <p>Sub Total</p>
-                            <span>$ 1000</span>
+                            <span>$ {{SubTotal()}}</span>
                         </div>
                         <div class="table__footer--discount">
                             <p>Discount</p>
-                            <input type="text" class="input">
+                            <input type="text" class="input" v-model="form.discount">
                         </div>
                         <div class="table__footer--total">
                             <p>Grand Total</p>
-                            <span>$ 1200</span>
+                            <span>$ {{Total()}}</span>
                         </div>
                     </div>
                 </div>
