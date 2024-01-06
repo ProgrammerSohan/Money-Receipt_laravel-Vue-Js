@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
-use App\Models\Customer;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +29,7 @@ Route::get('/create_invoice',[InvoiceController::class, 'create_invoice']);
 Route::get('/customers', [CustomerController::class, 'all_customer']);
 
 Route::get('/products', [ProductController::class, 'all_product']);
+Route::post('/add_invoice', [InvoiceController::class, 'add_invoice']);
 
 
 
