@@ -51,7 +51,7 @@ class InvoiceController extends Controller
             'due_date' =>null,
             'reference'=>null,
             'discount'=>0,
-            'term_and_conditions'=>'Default Terms & Conditions',
+            'terms_and_conditions'=>'Default Terms and Conditions',
             'items'=>[
                 [
                 'product_id'=>null,
@@ -94,6 +94,11 @@ class InvoiceController extends Controller
 
      }
 
-
+     public function show_invoice($id){
+        $invoice = Invoice::with('customer')->find($id);
+        return response()->json([
+            'invoice'=>$invoice
+        ],200);
+     }
 
 }
