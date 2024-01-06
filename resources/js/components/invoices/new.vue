@@ -1,5 +1,7 @@
 <script setup>
  import { onMounted, ref } from "vue"
+ import { useRouter } from 'vue-router';
+ const router = useRouter();
  let form = ref([])   
  let allcustomers = ref([])
  let customer_id = ref([])
@@ -100,8 +102,15 @@
         formData.append('terms_and_conditions',form.value.terms_and_conditions)
 
         axios.post("/api/add_invoice",formData)
-        listCart.value = []
-        router.push('/')
+       /* listCart.value = []
+        router.push('/')*/
+        .then(()=>{
+            listCart.value=[];
+            router.push('/');
+        })
+        .catch((error)=>{
+            console.error('Failed to save invoice:', error);
+        });
     }
 
  }
