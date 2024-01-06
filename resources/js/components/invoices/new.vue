@@ -7,10 +7,13 @@
  let listCart = ref([])
  const showModal = ref(false)
  const hideModal = ref(true)
+ let listproducts = ref([])
+
 
  onMounted(async ()=>{
     indexForm()
     getAllCustomers()
+    getproducts()
  })
 
  const indexForm = async()=>{
@@ -46,6 +49,13 @@
  }
  const closeModal = () => {
     showModal.value = !hideModal.value
+
+ }
+
+ const getproducts = async() => {
+    let response = await axios.get('/api/products')
+    console.log('products', response)
+    listproducts.value = response.data.products
 
  }
 
@@ -165,10 +175,17 @@
             <h3 class="modal__title">Add Item</h3>
             <hr><br>
             <div class="modal__items">
-                <select class="input my-1">
-                    <option value="None">None</option>
-                    <option value="None">LBC Padala</option>
-                </select>
+                <ul style="list-style: none;">
+                    <li v-for="(item, i) in listproducts" :key="item.id" style="display: grid; grid-template-columns:30px 350px 15px;align-items:center;padding-bottom:5px;">
+                        <p>{{i+1}}</p>
+                        <a href="#">{{item.item_code}} {{item.description}}</a>
+                        <button @click="addCart(item)" style="border:1px solid #e0e0e0;width:35px;height:35px;cursor:pointer;">
+                            +
+                        </button>
+        
+                       </li>
+                </ul>
+             
             </div>
             <br><hr>
             <div class="model__footer">
