@@ -1,8 +1,11 @@
 <script setup>
 import axios from "axios";
-import { onMounted, ref} from "vue"
+//import { onMounted, ref} from "vue"
+import { onMounted, ref, defineProps } from "vue";
+import { useRouter } from "vue-router"; 
+let form = ref({ id: '' });
 
-let form = ref({id:''})
+
 
 const props = defineProps({
     id:{
@@ -10,7 +13,8 @@ const props = defineProps({
         default:''
     }
 
-})
+});
+const router = useRouter();
 
 onMounted(async () =>{
     getInvoice()
@@ -31,6 +35,10 @@ const print = () => {
 
 }
 
+const onEdit = (id) => {
+    router.push('/invoice/edit/'+id);
+
+}
 </script>
 
 <template>
@@ -63,7 +71,7 @@ const print = () => {
                         </li>
                         <li>
                             <!-- Select Btn Option -->
-                            <button class="selectBtnFlat">
+                            <button class="selectBtnFlat" @click="onEdit(form.id)">
                                 <i class=" fas fa-reply"></i>
                                 Edit
                             </button>
