@@ -97,6 +97,13 @@ const SubTotal = ()=>{
 
  }
 
+ const onEdit = (id) =>{
+
+    if(form.value.invoice_items.length>=1){
+        alert(JSON.stringify(form.value.invoice_items))
+    }
+ }
+
 
 </script>
 
@@ -203,7 +210,7 @@ const SubTotal = ()=>{
                     
                 </div>
                 <div>
-                    <a class="btn btn-secondary">
+                    <a class="btn btn-secondary" @click="onEdit(form.id)">
                         Save
                     </a>
                 </div>

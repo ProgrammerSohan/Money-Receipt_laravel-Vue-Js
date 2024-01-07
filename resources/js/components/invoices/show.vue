@@ -3,7 +3,10 @@ import axios from "axios";
 //import { onMounted, ref} from "vue"
 import { onMounted, ref, defineProps } from "vue";
 import { useRouter } from "vue-router"; 
-let form = ref({ id: '' });
+let form = ref({ 
+    id: '',
+    created_at: '',
+ });
 
 
 
@@ -35,10 +38,12 @@ const print = () => {
 
 }
 
+
 const onEdit = (id) => {
     router.push('/invoice/edit/'+id);
 
 }
+
 
 </script>
 
