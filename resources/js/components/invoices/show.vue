@@ -39,6 +39,7 @@ const onEdit = (id) => {
     router.push('/invoice/edit/'+id);
 
 }
+
 </script>
 
 <template>
