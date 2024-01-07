@@ -1,8 +1,10 @@
 <script setup>
-import axios from "axios";
-//import { onMounted, ref} from "vue"
-import { onMounted, ref, defineProps } from "vue";
+//import axios from "axios";
+import { onMounted, ref} from "vue"
+//import { onMounted, ref, defineProps } from "vue";
+//import router from "../../router/index.js";
 import { useRouter } from "vue-router"; 
+const router = useRouter();
 let form = ref({ 
     id: '',
     created_at: '',
@@ -17,7 +19,7 @@ const props = defineProps({
     }
 
 });
-const router = useRouter();
+
 
 onMounted(async () =>{
     getInvoice()
